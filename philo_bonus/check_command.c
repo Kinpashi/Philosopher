@@ -6,12 +6,11 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 21:06:49 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/09 21:10:52 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/14 21:47:02 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
-
 
 int	check_char(char **arg)
 {

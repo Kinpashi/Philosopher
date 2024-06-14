@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_philo.c                                       :+:      :+:    :+:   */
+/*   ft_sleep.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 21:49:17 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/14 22:56:58 by aahlaqqa         ###   ########.fr       */
+/*   Created: 2024/06/14 20:05:21 by aahlaqqa          #+#    #+#             */
+/*   Updated: 2024/06/14 21:50:13 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	exit_philo(t_philo **philo)
+void	ft_sleep_with_check(t_philo *philo, size_t sleep_duration)
 {
-	t_philo	*temp;
-	size_t	i;
-	int		status;
+	size_t	start_time;
+	size_t	elapsed;
 
-	temp = *philo;
-	i = 0;
-	while (i < temp->num_philo)
+	philo = NULL;
+	start_time = get_time();
+	elapsed = 0;
+	while (elapsed < sleep_duration)
 	{
-		waitpid(-1, &status, 0);
-		if (status != 0)
-		{
-			i = -1;
-			while (++i < temp->num_philo)
-				kill(temp->pid[i], SIGKILL);
-			break ;
-		}
-		i++;
+		usleep(100);
+		elapsed = get_time() - start_time;
 	}
-	sem_close(temp->print_lock);
-	sem_close(temp->forks);
-	sem_unlink("/print_lock");
-	sem_unlink("/forks");
-	free(temp->pid);
-	free(temp);
 }
