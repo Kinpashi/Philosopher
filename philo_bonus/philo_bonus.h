@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 16:00:03 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/15 00:13:45 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/15 02:56:34 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ typedef struct s_philo
 	size_t		num_eat;
 	sem_t		*forks;
 	sem_t		*print_lock;
-	sem_t *flag;
-	sem_t *meals_lock;
-	sem_t *stop_lock;
+	sem_t		*flag;
+	sem_t		*meals_lock;
 	int			*pid;
 	pthread_t	monitor;
 	size_t		count;
@@ -55,5 +54,6 @@ void			philo_start(t_philo *philo);
 void			exit_philo(t_philo **philo);
 t_philo			*init_philo(int argc, char **argv);
 void			ft_sleep_with_check(t_philo *philo, size_t sleep_duration);
+void			print_error(void);
 
 #endif

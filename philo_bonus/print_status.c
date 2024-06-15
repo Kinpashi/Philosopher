@@ -6,11 +6,17 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 22:21:19 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/15 01:40:07 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/15 03:05:04 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
+
+void	print_error(void)
+{
+	printf("Error !!\n");
+	exit(1);
+}
 
 void	print_status(t_philo *philo, char *str)
 {

@@ -6,17 +6,25 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 21:49:17 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/15 00:14:06 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/15 02:59:08 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void exit_philo(t_philo **philo)
+void	unlink_sem(void)
 {
-	t_philo *temp;
-	size_t i;
-	int status;
+	sem_unlink("/print_lock");
+	sem_unlink("/forks");
+	sem_unlink("/flag");
+	sem_unlink("/meals_lock");
+}
+
+void	exit_philo(t_philo **philo)
+{
+	t_philo	*temp;
+	size_t	i;
+	int		status;
 
 	temp = *philo;
 	i = 0;
@@ -28,7 +36,7 @@ void exit_philo(t_philo **philo)
 			i = -1;
 			while (++i < temp->num_philo)
 				kill(temp->pid[i], SIGKILL);
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -36,12 +44,7 @@ void exit_philo(t_philo **philo)
 	sem_close(temp->forks);
 	sem_close(temp->flag);
 	sem_close(temp->meals_lock);
-	sem_close(temp->stop_lock);
-	sem_unlink("/print_lock");
-	sem_unlink("/forks");
-	sem_unlink("/flag");
-	sem_unlink("/meals_lock");
-	sem_unlink("/stop_lock");
+	unlink_sem();
 	free(temp->pid);
 	free(temp);
 }
