@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 21:51:17 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/15 03:05:52 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/24 18:23:56 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	check_death(t_philo *philo)
 		sem_wait(philo->print_lock);
 		printf("%zums Philo %zu %s\n", get_time() - philo->start_time,
 			philo->id, "died");
-		philo->stop = 1;
+		philo->finish = 1;
 	}
 	sem_post(philo->meals_lock);
 }
@@ -45,11 +45,11 @@ void	*monitor_check(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	while (!philo->stop)
+	while (!philo->finish)
 	{
 		usleep(100);
 		check_death(philo);
-		if (philo->stop)
+		if (philo->finish)
 			break ;
 		if (check_meal_count(philo))
 			break ;
