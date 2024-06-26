@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	data = init_philo(argc, argv);
 	i = 0;
 	data->start_time = get_time();
+	create_semaphore(data);
 	while (i < data->num_philo)
 	{
 		data->pid[i] = fork();
