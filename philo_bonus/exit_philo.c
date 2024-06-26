@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 21:49:17 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/24 18:29:55 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:44:44 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,29 @@ void	unlink_sem(void)
 
 void	exit_philo(t_philo **philo)
 {
-	t_philo	*data;
+	t_philo	*temp;
 	size_t	i;
 	int		status;
 
-	data = *philo;
+	temp = *philo;
 	i = 0;
-	while (i < data->num_philo)
+	while (i < temp->num_philo)
 	{
 		waitpid(-1, &status, 0);
 		if (status != 0)
 		{
 			i = -1;
-			while (++i < data->num_philo)
-				kill(data->pid[i], SIGKILL);
+			while (++i < temp->num_philo)
+				kill(temp->pid[i], SIGKILL);
 			break ;
 		}
 		i++;
 	}
-	sem_close(data->print_lock);
-	sem_close(data->forks);
-	sem_close(data->flag);
-	sem_close(data->meals_lock);
+	sem_close(temp->print_lock);
+	sem_close(temp->forks);
+	sem_close(temp->flag);
+	sem_close(temp->meals_lock);
 	unlink_sem();
-	free(data->pid);
-	free(data);
+	free(temp->pid);
+	free(temp);
 }

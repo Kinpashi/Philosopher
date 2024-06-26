@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 18:11:33 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/24 18:24:57 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/14 23:38:14 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_philo	*declar_data(int argc, char **argv)
 		data->num_eat = ft_atoi_bonus(argv[5]);
 	else
 		data->num_eat = 0;
-	data->finish = 0;
+	data->stop = 0;
 	data->die = 0;
 	data->count = 0;
 	return (data);

@@ -6,7 +6,7 @@
 #    By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/06 16:06:40 by aahlaqqa          #+#    #+#              #
-#    Updated: 2024/06/24 18:24:47 by aahlaqqa         ###   ########.fr        #
+#    Updated: 2024/06/26 15:55:57 by aahlaqqa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJECTS= $(SOURCES:.c=.o)
 
 NAME= philo_bonus
 
-all: $(NAME)
+bonus: $(NAME)
 
 $(NAME): $(OBJECTS)
 	$(CC) $(OBJECTS) $(LFLAGS) -o $(NAME)
@@ -35,8 +35,8 @@ fclean: clean
 
 re: fclean $(NAME)
 
-debug:
-	cc $(CFLAGS) -g3 fsanitize=address $(SOURCES) -o philo_bonus
+# debug:
+# 	cc $(CFLAGS) -g3 -fsanitize=address $(SOURCES) -o philo_bonus
 
 .PHONY: all clean fclean re
 .SECONDARY: $(OBJECTS)
