@@ -51,6 +51,5 @@ t_philo	*init_philo(int argc, char **argv)
 		free(data);
 		return (NULL);
 	}
-	create_semaphore(data);
 	return (data);
 }
