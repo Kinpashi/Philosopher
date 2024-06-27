@@ -12,19 +12,19 @@
 
 #include "philo_bonus.h"
 
-size_t get_time(void)
+size_t	get_time(void)
 {
-	struct timeval tv;
+	struct timeval	tv;
 
 	if (gettimeofday(&tv, NULL) == -1)
 		write(2, "Error\n", 6);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_philo *data;
-	size_t i;
+	t_philo	*data;
+	size_t	i;
 
 	if (check_command(argc, argv))
 		return (1);

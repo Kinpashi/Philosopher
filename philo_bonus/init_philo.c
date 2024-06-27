@@ -12,9 +12,9 @@
 
 #include "philo_bonus.h"
 
-t_philo *declar_data(int argc, char **argv)
+t_philo	*declar_data(int argc, char **argv)
 {
-	t_philo *data;
+	t_philo	*data;
 
 	data = malloc(sizeof(t_philo));
 	if (!data)
@@ -38,9 +38,9 @@ t_philo *declar_data(int argc, char **argv)
 	return (data);
 }
 
-t_philo *init_philo(int argc, char **argv)
+t_philo	*init_philo(int argc, char **argv)
 {
-	t_philo *data;
+	t_philo	*data;
 
 	data = declar_data(argc, argv);
 	data->pid = (int *)malloc(sizeof(int) * data->num_philo);
