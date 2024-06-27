@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 22:21:19 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/15 03:05:04 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:45:07 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_error(void)
 void	print_status(t_philo *philo, char *str)
 {
 	sem_wait(philo->print_lock);
-	if (!philo->stop)
+	if (!philo->finish)
 		printf("%zums Philo %zu %s\n", get_time() - philo->start_time,
 			philo->id, str);
 	sem_post(philo->print_lock);

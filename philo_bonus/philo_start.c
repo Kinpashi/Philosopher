@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 21:51:17 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/27 02:39:19 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:44:45 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@ void	check_death(t_philo *philo)
 		sem_wait(philo->print_lock);
 		printf("%zums Philo %zu %s\n", get_time() - philo->start_time,
 			philo->id, "died");
-		philo->stop = 1;
+		philo->finish = 1;
 	}
 	sem_post(philo->meals_lock);
 }
 
 int	check_meal_count(t_philo *philo)
 {
-	int	stop;
+	int	finish;
 
-	stop = 0;
+	finish = 0;
 	sem_wait(philo->meals_lock);
 	if (philo->num_eat != 0 && philo->count >= philo->num_eat)
-		stop = 1;
+		finish = 1;
 	sem_post(philo->meals_lock);
-	return (stop);
+	return (finish);
 }
 
 void	*monitor_check(void *arg)
@@ -45,16 +45,16 @@ void	*monitor_check(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	while (!philo->stop)
+	while (!philo->finish)
 	{
 		usleep(100);
 		check_death(philo);
-		if (philo->stop)
+		if (philo->finish)
 			break ;
 		if (check_meal_count(philo))
 			break ;
 	}
-	if (philo->stop)
+	if (philo->finish)
 		exit(1);
 	else
 		exit(0);

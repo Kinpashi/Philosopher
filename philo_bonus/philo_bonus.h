@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 16:00:03 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/15 02:56:34 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/27 14:43:59 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_philo
 	int			*pid;
 	pthread_t	monitor;
 	size_t		count;
-	size_t		stop;
+	size_t		finish;
 	size_t		die;
 	size_t		id;
 	size_t		start_time;
