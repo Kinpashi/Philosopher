@@ -6,7 +6,7 @@
 #    By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/25 19:46:40 by aahlaqqa          #+#    #+#              #
-#    Updated: 2024/06/06 16:12:07 by aahlaqqa         ###   ########.fr        #
+#    Updated: 2024/06/27 14:50:23 by aahlaqqa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,8 @@ fclean: clean
 
 re: fclean $(NAME)
 
-debug:
-	cc $(CFLAGS) -g3 -fsanitize=thread $(SOURCES) -o philo
+# debug:
+# 	cc $(CFLAGS) -g3 -fsanitize=thread $(SOURCES) -o philo
 
 .PHONY: all clean fclean re
 .SECONDARY: $(OBJECTS)
