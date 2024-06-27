@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 21:05:51 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/14 22:49:27 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/27 02:38:06 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	main(int argc, char **argv)
 	data = init_philo(argc, argv);
 	i = 0;
 	data->start_time = get_time();
-	create_semaphore(data);
 	while (i < data->num_philo)
 	{
 		data->pid[i] = fork();

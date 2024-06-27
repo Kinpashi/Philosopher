@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 21:51:17 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/26 15:48:58 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/27 02:39:19 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ void	*monitor_check(void *arg)
 		if (check_meal_count(philo))
 			break ;
 	}
-	return (NULL);
+	if (philo->stop)
+		exit(1);
+	else
+		exit(0);
 }
 
 void	take_forks(t_philo *philo)

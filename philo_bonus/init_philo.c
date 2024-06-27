@@ -6,15 +6,15 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 18:11:33 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/14 23:38:14 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/27 02:38:14 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-static t_philo	*declar_data(int argc, char **argv)
+static t_philo *declar_data(int argc, char **argv)
 {
-	t_philo	*data;
+	t_philo *data;
 
 	data = malloc(sizeof(t_philo));
 	if (!data)
@@ -38,9 +38,9 @@ static t_philo	*declar_data(int argc, char **argv)
 	return (data);
 }
 
-t_philo	*init_philo(int argc, char **argv)
+t_philo *init_philo(int argc, char **argv)
 {
-	t_philo	*data;
+	t_philo *data;
 
 	data = declar_data(argc, argv);
 	data->pid = (int *)malloc(sizeof(int) * data->num_philo);
@@ -51,5 +51,6 @@ t_philo	*init_philo(int argc, char **argv)
 		free(data);
 		return (NULL);
 	}
+	create_semaphore(data);
 	return (data);
 }
