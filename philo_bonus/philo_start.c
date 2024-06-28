@@ -6,13 +6,13 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 21:51:17 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/27 14:44:45 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:44:04 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	check_death(t_philo *philo)
+void check_death(t_philo *philo)
 {
 	sem_wait(philo->meals_lock);
 	if (get_time() - philo->last_meal > philo->time_die)
@@ -22,15 +22,15 @@ void	check_death(t_philo *philo)
 		sem_post(philo->flag);
 		sem_wait(philo->print_lock);
 		printf("%zums Philo %zu %s\n", get_time() - philo->start_time,
-			philo->id, "died");
+			   philo->id, "died");
 		philo->finish = 1;
 	}
 	sem_post(philo->meals_lock);
 }
 
-int	check_meal_count(t_philo *philo)
+int check_meal_count(t_philo *philo)
 {
-	int	finish;
+	int finish;
 
 	finish = 0;
 	sem_wait(philo->meals_lock);
@@ -40,9 +40,9 @@ int	check_meal_count(t_philo *philo)
 	return (finish);
 }
 
-void	*monitor_check(void *arg)
+void *monitor_check(void *arg)
 {
-	t_philo	*philo;
+	t_philo *philo;
 
 	philo = (t_philo *)arg;
 	while (!philo->finish)
@@ -50,17 +50,23 @@ void	*monitor_check(void *arg)
 		usleep(100);
 		check_death(philo);
 		if (philo->finish)
-			break ;
+			break;
 		if (check_meal_count(philo))
-			break ;
+			break;
 	}
 	if (philo->finish)
+	{
+		close_sem(philo);
 		exit(1);
+	}
 	else
+	{
+		close_sem(philo);
 		exit(0);
+	}
 }
 
-void	take_forks(t_philo *philo)
+void take_forks(t_philo *philo)
 {
 	sem_wait(philo->forks);
 	print_status(philo, "has taken a fork");
@@ -68,7 +74,7 @@ void	take_forks(t_philo *philo)
 	print_status(philo, "has taken a fork");
 }
 
-void	philo_start(t_philo *philo)
+void philo_start(t_philo *philo)
 {
 	if (pthread_create(&philo->monitor, NULL, &monitor_check, philo) != 0)
 		print_error();
