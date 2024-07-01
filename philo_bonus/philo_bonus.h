@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 16:00:03 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/06/28 16:39:20 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/06/28 22:56:26 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_philo
 	sem_t		*print_lock;
 	sem_t		*flag;
 	sem_t		*meals_lock;
-	sem_t		*destroy;
 	int			*pid;
 	pthread_t	monitor;
 	size_t		count;
